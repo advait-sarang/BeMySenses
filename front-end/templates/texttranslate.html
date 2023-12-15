@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Translated Text</title>
+</head>
+<body>
+    <h1>Translated Text</h1>
+    <p>Enter the text you want to translate:</p>
+    <input type="text" id="userInput">
+    <button onclick="translateAndSpeak()">Translate & Speak</button>
+    <p id="translatedText"></p>
+
+    <script>
+        function translateAndSpeak() {
+            const userInput = document.getElementById("userInput").value;
+            const targetLanguage = "hi"; // Change to "mr" for Marathi
+
+            // Fetch the translation
+            fetchTranslation(userInput, targetLanguage)
+                .then(translatedText => {
+                    document.getElementById("translatedText").textContent = translatedText;
+                    speakText(translatedText);
+                })
+                .catch(error => {
+                    console.error("Error fetching translation:", error);
+                });
+        }
+
+        async function fetchTranslation(text, targetLanguage) {
+            const response = await fetch(`/translate?text=${encodeURIComponent(text)}&target=${targetLanguage}`);
+            const data = await response.json();
+            return data.translatedText;
+        }
+
+        function speakText(text) {
+            const synth = window.speechSynthesis;
+            const utterance = new SpeechSynthesisUtterance(text);
+            synth.speak(utterance);
+        }
+    </script>
+</body>
+</html>

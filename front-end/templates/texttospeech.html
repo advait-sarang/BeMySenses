@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text-to-Speech Converter</title>
+    <style>
+        /* Add your custom CSS styles here */
+        /* For simplicity, we won't add any specific styles in this example */
+    </style>
+</head>
+<body>
+   
+    <textarea id="textToConvert" rows="2" cols="20" placeholder="Enter text here"></textarea>
+    <button id="convertBtn">Convert to Speech</button>
+    <p class="error-para"></p>
+
+    <script>
+
+
+
+        const text = document.getElementById("textToConvert");
+        const convertBtn = document.getElementById("convertBtn");
+
+        convertBtn.addEventListener("click", function () {
+            const speechSynth = window.speechSynthesis;
+            const enteredText = text.value;
+            const error = document.querySelector(".error-para");
+
+            if (!speechSynth.speaking && !enteredText.trim().length) {
+                error.textContent = "Nothing to Convert! Enter text in the text area.";
+            }
+
+            if (!speechSynth.speaking && enteredText.trim().length) {
+                error.textContent = "";
+                const newUtter = new SpeechSynthesisUtterance(enteredText);
+                speechSynth.speak(newUtter);
+                convertBtn.textContent = "Sound is Playing...";
+            }
+
+            setTimeout(() => {
+                convertBtn.textContent = "Play Converted Sound";
+            }, 5000);
+        });
+    </script>
+</body>
+</html>
