@@ -24,7 +24,7 @@ mp_drawing_styles = mp.solutions.drawing_styles
 hands = mp_hands.Hands(static_image_mode=True, min_detection_confidence=0.3)
 
 # Sign language dictionary for translation images
-images_folder = r'E:\Miniproject\www.bemysenses.com\Dataset ASL Hand Gestures\grayscale_frames'
+images_folder = r'D:\Projects\BeMySenses\src\Dataset ASL Hand Gestures\grayscale_frames'
 sign_language_dict = {
     'A': 'a_1-19.png', 'B': 'b_1-19.png', 'C': 'c_1-19.png', 'D': 'd_1-19.png', 'E': 'e_1-19.png',
     'F': 'f_1-19.png', 'G': 'g_1-19.png', 'H': 'h_1-19.png', 'I': 'i_1-19.png', 'J': 'j_1-19.png',
@@ -55,7 +55,7 @@ root.title("Be My Senses - Made for VESIT")
 root.geometry("800x600")
 
 # Load and set background image
-bg_image_path = r"E:\Miniproject\www.bemysenses.com\images\vesit.png"
+bg_image_path = r"D:\Projects\BeMySenses\src\front-end\images\vesit.png"
 bg_image = Image.open(bg_image_path)
 bg_image = bg_image.resize((800, 600), Image.LANCZOS)
 bg_image_tk = ImageTk.PhotoImage(bg_image)
