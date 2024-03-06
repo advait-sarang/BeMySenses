@@ -3,7 +3,7 @@ from PIL import Image
 import matplotlib.pyplot as plt
 
 # Define the path to your sign language alphabet images folder
-images_folder = r'D:\Miniproject\www.bemysenses.com\Dataset ASL Hand Gestures\grayscale_frames'
+images_folder = r'D:\Projects\BeMySenses\src\Dataset ASL Hand Gestures\grayscale_frames'
 
 # Define a mapping from text to image filenames
 sign_language_dict = {
